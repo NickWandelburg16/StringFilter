@@ -9,7 +9,7 @@ public:
 	int getSize() override;
 	std::vector<std::string> getAllElements() override;
 	void insert(std::string) override;
-	std::string remove(std::string) override;
+	bool remove(std::string) override;
 	bool contains(std::string) override;
 
 private:

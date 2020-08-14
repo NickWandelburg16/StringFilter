@@ -18,6 +18,10 @@ public:
 		return hash;
 	}
 
+	int getItemCount() {
+		return itemsCount;
+	}
+
 	float getLoadFactor()
 	{
 		return loadFactor;
@@ -26,7 +30,7 @@ public:
 	virtual int getSize() = 0; 
 	virtual std::vector<std::string> getAllElements() = 0;
 	virtual void insert(std::string) = 0; 
-	virtual std::string remove(std::string) = 0;
+	virtual bool remove(std::string) = 0;
 	virtual bool contains(std::string) = 0;
 
 protected:
