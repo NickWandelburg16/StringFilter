@@ -5,7 +5,7 @@
 
 ChainedHashSet::ChainedHashSet(int initSize) : HashSet(initSize)
 {
-	hashSet = std::vector<std::vector<std::string>>(size);
+	hashSet = std::vector<LinkedList>(size);
 }
 
 int ChainedHashSet::getSize()
@@ -13,45 +13,48 @@ int ChainedHashSet::getSize()
 	return size;
 }
 
-std::vector<std::string> ChainedHashSet::getAllElements()
+LinkedList ChainedHashSet::getAllElements()
 {
 	//TODO
-	return std::vector<std::string>();
+	return LinkedList{};
 }
 
 void ChainedHashSet::insert(std::string key)
 {
 	int index = hashFunction(key);
-	hashSet.at(index).push_back(key);
+	hashSet.at(index).insert(key);
 	itemsCount++;
 	updateLoadFactor();
+	hashSet.at(index).print();
 }
 
 bool ChainedHashSet::remove(std::string key)
 {
-	bool removed = false;
-	int itemPos = 0;
 	int index = hashFunction(key);
-	for (std::string item : hashSet.at(index)) {
-		if (item.compare(key) == 0) {
-			hashSet.at(index).erase(hashSet.at(index).begin() + itemPos);
-			removed = true;
-			itemsCount--;
-			updateLoadFactor();
-			break;
-		}
-		itemPos++;
-	}
-	return removed;
+	itemsCount--;
+	updateLoadFactor();
+	return hashSet.at(index).remove(key);
 }
 
 bool ChainedHashSet::contains(std::string key)
 {
-	//TODO
-	return false;
+	int index = hashFunction(key);
+	return hashSet.at(index).contains(key);
 }
 
 void ChainedHashSet::resize()
 {
-	//TODO
+	size *= 2;
+	std::vector<LinkedList> tempHashSet = std::vector<LinkedList>(size);
+	for (int i = 0; i < hashSet.size(); i++) {
+		LinkedList linkedList = hashSet.at(i);
+		if (linkedList.size() == 0) continue;
+		hashSet.at(i).print();
+		for (LinkedList::Iterator iterator = linkedList.begin(); iterator != linkedList.end(); iterator++) {
+			std::string item = *iterator;
+			int index = hashFunction(item);
+			tempHashSet.at(index).insert(item);
+		}
+		hashSet = tempHashSet;
+	}
 }

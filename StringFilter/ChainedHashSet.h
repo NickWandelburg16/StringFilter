@@ -1,19 +1,18 @@
 #pragma once
 #include <vector>
 #include "HashSet.h"
+#include "LinkedList.h"
 
 class ChainedHashSet : public HashSet
 {
 public:
 	ChainedHashSet(int size = 20);
 	int getSize() override;
-	std::vector<std::string> getAllElements() override;
+	LinkedList getAllElements() override;
 	void insert(std::string) override;
 	bool remove(std::string) override;
 	bool contains(std::string) override;
-
 private:
-	std::vector<std::vector<std::string>> hashSet;
-
+	std::vector<LinkedList> hashSet;
 	void resize() override;
 };

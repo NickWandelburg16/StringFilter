@@ -141,10 +141,14 @@
   <ItemGroup>
     <ClInclude Include="ChainedHashSet.h" />
     <ClInclude Include="HashSet.h" />
+    <ClInclude Include="LinkedList.h" />
+    <ClInclude Include="StringFilter.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ChainedHashSet.cpp" />
+    <ClCompile Include="LinkedList.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="StringFilter.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

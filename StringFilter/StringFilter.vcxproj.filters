@@ -21,12 +21,24 @@
     <ClInclude Include="ChainedHashSet.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="LinkedList.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="StringFilter.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ChainedHashSet.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="LinkedList.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="StringFilter.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>

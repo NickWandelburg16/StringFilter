@@ -5,7 +5,8 @@ int main()
 {
 	ChainedHashSet chainedHashSet{};
 	std::cout << chainedHashSet.getSize() << " " << chainedHashSet.getItemCount() << " " << chainedHashSet.getLoadFactor() << std::endl;
-	chainedHashSet.insert("abc");
+	for (int i = 0; i <= 15; i++)
+		chainedHashSet.insert("abc");
 	std::cout << chainedHashSet.getSize() << " " << chainedHashSet.getItemCount() << " " << chainedHashSet.getLoadFactor() << std::endl;
 	chainedHashSet.remove("abc");
 	std::cout << chainedHashSet.getSize() << " " << chainedHashSet.getItemCount() << " " << chainedHashSet.getLoadFactor() << std::endl;

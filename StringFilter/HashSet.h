@@ -2,6 +2,7 @@
 #include <vector>
 #include <string>
 #include <cmath>
+#include "LinkedList.h"
 
 class HashSet
 {
@@ -28,7 +29,7 @@ public:
 	}
 
 	virtual int getSize() = 0; 
-	virtual std::vector<std::string> getAllElements() = 0;
+	virtual LinkedList getAllElements() = 0;
 	virtual void insert(std::string) = 0; 
 	virtual bool remove(std::string) = 0;
 	virtual bool contains(std::string) = 0;
@@ -39,9 +40,10 @@ protected:
 	float loadFactor;
 	const float K;
 
-	virtual void updateLoadFactor() {
+	void updateLoadFactor() {
 		loadFactor = static_cast<float>(itemsCount) / size;
-		if (loadFactor >= K) resize();
+		if (loadFactor >= K) 
+			resize();
 	}
 
 	virtual void resize() = 0;
