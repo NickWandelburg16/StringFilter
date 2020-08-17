@@ -1,7 +1,7 @@
-#include <vector>
-#include <string>
 #include "ChainedHashSet.h"
 #include "HashSet.h"
+#include <vector>
+#include <string>
 
 ChainedHashSet::ChainedHashSet(int initSize) : HashSet(initSize)
 {
@@ -24,7 +24,6 @@ void ChainedHashSet::insert(std::string key)
 	int index = hashFunction(key);
 	hashSet.at(index).insert(key);
 	itemsCount++;
-	hashSet.at(index).print();
 	updateLoadFactor();
 }
 

@@ -1,13 +1,18 @@
 #include <iostream>
 #include "ChainedHashSet.h"
 
+void print(ChainedHashSet chainedHashSet) {
+	std::cout << "Size: \t" << chainedHashSet.getSize() << "\t Item count: \t" << chainedHashSet.getItemCount() 
+		<< "\tLoadFactor: \t" << chainedHashSet.getLoadFactor() << std::endl;
+}
+
 int main()
 {
 	ChainedHashSet chainedHashSet{};
-	std::cout << chainedHashSet.getSize() << " " << chainedHashSet.getItemCount() << " " << chainedHashSet.getLoadFactor() << std::endl;
+	print(chainedHashSet);
 	for (int i = 0; i <= 15; i++)
 		chainedHashSet.insert("abc");
-	std::cout << chainedHashSet.getSize() << " " << chainedHashSet.getItemCount() << " " << chainedHashSet.getLoadFactor() << std::endl;
+	print(chainedHashSet);
 	chainedHashSet.remove("abc");
-	std::cout << chainedHashSet.getSize() << " " << chainedHashSet.getItemCount() << " " << chainedHashSet.getLoadFactor() << std::endl;
+	print(chainedHashSet);
 }
