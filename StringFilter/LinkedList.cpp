@@ -1,9 +1,6 @@
 #include "LinkedList.h"
 #include<iostream>
 
-LinkedList::Node* LinkedList::firstNode;
-LinkedList::Node* LinkedList::lastNode;
-
 LinkedList::LinkedList() : listSize{ 0 } {
     firstNode = nullptr;
     lastNode = nullptr;

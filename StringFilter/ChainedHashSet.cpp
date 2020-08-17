@@ -24,8 +24,8 @@ void ChainedHashSet::insert(std::string key)
 	int index = hashFunction(key);
 	hashSet.at(index).insert(key);
 	itemsCount++;
-	updateLoadFactor();
 	hashSet.at(index).print();
+	updateLoadFactor();
 }
 
 bool ChainedHashSet::remove(std::string key)
@@ -49,12 +49,12 @@ void ChainedHashSet::resize()
 	for (int i = 0; i < hashSet.size(); i++) {
 		LinkedList linkedList = hashSet.at(i);
 		if (linkedList.size() == 0) continue;
-		hashSet.at(i).print();
 		for (LinkedList::Iterator iterator = linkedList.begin(); iterator != linkedList.end(); iterator++) {
 			std::string item = *iterator;
 			int index = hashFunction(item);
 			tempHashSet.at(index).insert(item);
 		}
-		hashSet = tempHashSet;
 	}
+	hashSet = tempHashSet;
+	updateLoadFactor();
 }

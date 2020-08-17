@@ -12,6 +12,7 @@ public:
 	void insert(std::string) override;
 	bool remove(std::string) override;
 	bool contains(std::string) override;
+
 private:
 	std::vector<LinkedList> hashSet;
 	void resize() override;

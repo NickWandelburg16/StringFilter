@@ -29,7 +29,6 @@ public:
 
     class Iterator {
     public:
-        Iterator() : currentNode(firstNode) {}
         Iterator(const Node* node) : currentNode(node) { }
 
         Iterator& operator=(Node* node)
@@ -69,6 +68,6 @@ public:
 private: 
 	int listSize;
 
-	static Node* firstNode;
-	static Node* lastNode;
+	Node* firstNode;
+	Node* lastNode;
 };
