@@ -5,14 +5,15 @@ class LinkedList
 {
 public:
 	LinkedList();
+    LinkedList& operator+=(const LinkedList& n);
 	void insert(std::string item);
 	bool remove(std::string item);
 	bool contains(std::string item);
 	int size();
     void print();
 	class Iterator;
-	Iterator begin();
-	Iterator end();
+	Iterator begin() const;
+	Iterator end() const;
 
     class Node {
     public:

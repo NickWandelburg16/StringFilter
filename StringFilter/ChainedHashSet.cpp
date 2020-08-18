@@ -15,8 +15,13 @@ int ChainedHashSet::getSize()
 
 LinkedList ChainedHashSet::getAllElements()
 {
-	//TODO
-	return LinkedList{};
+	LinkedList allElements{};
+	for (int i = 0; i < hashSet.size(); i++) {
+		LinkedList linkedList = hashSet.at(i);
+		if (linkedList.size() == 0) continue;
+		allElements += linkedList;
+	}
+	return allElements;
 }
 
 void ChainedHashSet::insert(std::string key)
@@ -30,9 +35,12 @@ void ChainedHashSet::insert(std::string key)
 bool ChainedHashSet::remove(std::string key)
 {
 	int index = hashFunction(key);
-	itemsCount--;
-	updateLoadFactor();
-	return hashSet.at(index).remove(key);
+	if (hashSet.at(index).remove(key)) {
+		itemsCount--;
+		updateLoadFactor();
+		return true;
+	}
+	return false;
 }
 
 bool ChainedHashSet::contains(std::string key)

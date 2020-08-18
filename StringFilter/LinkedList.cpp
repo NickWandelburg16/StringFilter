@@ -6,6 +6,14 @@ LinkedList::LinkedList() : listSize{ 0 } {
     lastNode = nullptr;
 }
 
+LinkedList& LinkedList::operator+=(const LinkedList& n)
+{
+    for (LinkedList::Iterator iterator = n.begin(); iterator != n.end(); iterator++) {
+        this->insert(*iterator);
+    }
+    return *this;
+}
+
 void LinkedList::insert(std::string item)
 {
     Node* temp = new Node{ item };
@@ -27,21 +35,26 @@ bool LinkedList::remove(std::string item)
     Node* currentNode = firstNode;
     do {
         if (currentNode->item.compare(item) == 0) {
-            if (currentNode == firstNode) {
-                firstNode = nullptr;
-            }
-            else if (currentNode->next != nullptr) {
-                currentNode->front->next = currentNode->next;
-                currentNode->next->front = currentNode->front;
-                currentNode = currentNode->next;
+            if (currentNode->next != nullptr) {
+                if (currentNode->front != nullptr) {
+                    currentNode->next->front = currentNode->front;
+                    currentNode->front->next = currentNode->next;
+                }
+                else {
+                    currentNode = currentNode->next;
+                }
             }
             else {
-                currentNode->front->next = nullptr;
+                if (currentNode->front != nullptr)
+                    currentNode->front->next = nullptr;
+                else
+                    firstNode = nullptr;
             }
-            delete currentNode;
+            listSize--;
             return true;
         }
-    } while (currentNode->next != nullptr);
+        currentNode = currentNode->next;
+    } while (currentNode != nullptr);
     return false;
 }
 
@@ -69,12 +82,12 @@ void LinkedList::print()
     std::cout << std::endl;
 }
 
-LinkedList::Iterator LinkedList::begin()
+LinkedList::Iterator LinkedList::begin() const
 {
     return Iterator(firstNode);
 }
 
-LinkedList::Iterator LinkedList::end()
+LinkedList::Iterator LinkedList::end() const
 {
     return Iterator(nullptr);
 }
