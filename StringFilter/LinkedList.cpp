@@ -45,10 +45,14 @@ bool LinkedList::remove(std::string item)
                 }
             }
             else {
-                if (currentNode->front != nullptr)
+                if (currentNode->front != nullptr) {
                     currentNode->front->next = nullptr;
-                else
+                    lastNode = currentNode->front;
+                }
+                else {
                     firstNode = nullptr;
+                    lastNode = nullptr;
+                }
             }
             listSize--;
             return true;

@@ -24,4 +24,6 @@ void StringFilter::print()
 	
 	LinkedList dublicateItemLinkedList = dublicateItems.getAllElements();
 	std::cout << "Dublicate Items: ";  dublicateItemLinkedList.print();
+
+	std::cout << std::endl;
 }
